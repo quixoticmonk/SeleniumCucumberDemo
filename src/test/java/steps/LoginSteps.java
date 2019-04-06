@@ -9,25 +9,23 @@ import pages.LoginPage;
 import utilitlies.Hooks;
 
 public class LoginSteps {
-    private WebDriver driver;
+    private static WebDriver driver;
     private LoginPage loginPage;
 
-    public LoginSteps() {
+    public  LoginSteps() {
         driver = Hooks.returnDriver();
     }
-
 
     @Given("I am on the url {string}")
     public void iAmOnTheUrl(String url) {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.verifyIAmOnLoginPage(url);
 
-
     }
 
     @When("I enter {string} for the field {string}")
     public void iEnterForTheField(String fieldValue, String fieldlabel) {
-        loginPage.enterFieldValue(fieldValue,fieldlabel);
+        loginPage.enterFieldValue(fieldValue, fieldlabel);
     }
 
     @When("I select the {string} button")

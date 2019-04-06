@@ -76,5 +76,24 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <browserName>chrome</browserName>
+                        <headlessChrome>false</headlessChrome>
+                        <baseUrl>https://the-internet.herokuapp.com</baseUrl>
+                        <runOnGrid>false</runOnGrid>
+                        <gridUrl></gridUrl>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
