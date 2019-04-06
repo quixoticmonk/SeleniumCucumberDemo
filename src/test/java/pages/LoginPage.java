@@ -13,19 +13,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class LoginPage extends BrowserFactory {
-    private static final String PASSWORD_XPATH = "//label[@for='password']";
+public class LoginPage {
+    private static final String PASSWORD_XPATH = "//input[@id='password']";
     private static final String LOGIN_HEADER_XPATH = "//h2[contains(text(),'Login Page')]";
-    private static final String USERNAME_XPATH = "//label[@for='username']";
+    private static final String USERNAME_XPATH = "//input[@name='username']";
     private static WebDriver driver;
     @FindBy(how = How.XPATH, using = "//button[@type='submit']")
     private static WebElement loginButton;
-
     public LoginPage(WebDriver driver1) {
         driver = driver1;
     }
 
     public void verifyIAmOnLoginPage(String url){
+        BrowserFactory.openUrl(url);
         new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(LOGIN_HEADER_XPATH)));
     }
     public void enterFieldValue(String fieldValue,String fieldLabel){

@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
         monochrome = true,
         snippets = SnippetType.CAMELCASE,
         tags ={"@first"}
-
 )
 
 /*tags={"@smoke"} - Run only the tests with tag smoke

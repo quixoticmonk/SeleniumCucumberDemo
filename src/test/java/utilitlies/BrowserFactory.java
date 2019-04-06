@@ -10,6 +10,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -19,13 +20,15 @@ public class BrowserFactory {
     private static final String BROWSER_NAME = System.getProperty("browserName");
     private static final String HEADLESS_CHROME = System.getProperty("headlessChrome");
     private static final String RUN_ON_GRID = System.getProperty("runOnGrid");
-    private static final String CHROME = "Chrome";
-    private static final String FIREFOX = "Firefox";
-    private static final String INTERNET_EXPLORER = "Internet Explorer";
+    private static final String CHROME = "CHROME";
+    private static final String FIREFOX = "FIREFOX";
+    private static final String INTERNET_EXPLORER = "INTERNET EXPLORER";
     private static ChromeOptions chromeOptions = new ChromeOptions();
     private static FirefoxOptions firefoxOptions = new FirefoxOptions();
     private static InternetExplorerOptions ieOptions = new InternetExplorerOptions();
     private static final String GRID_URL = System.getProperty("gridUrl");
+    private static final String DRIVER_LOCATION=System.getProperty("driverLocation");
+    private static final String CHROME_DRIVER_LCN=DRIVER_LOCATION+ File.separator+System.getProperty("chromeDriverBinary");
 
     public WebDriver configureDriver() {
         if ("true".equalsIgnoreCase(RUN_ON_GRID)) {
@@ -72,7 +75,7 @@ public class BrowserFactory {
         return driver;
     }
 
-    public void openUrl(String url) {
+    public static void openUrl(String url) {
         driver.get(BASE_URL + "/" + url);
     }
 
@@ -83,7 +86,7 @@ public class BrowserFactory {
     }
 
     private static WebDriver configureChromeDriver() {
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver",CHROME_DRIVER_LCN);
         return new ChromeDriver(getChromeOptions());
     }
 
