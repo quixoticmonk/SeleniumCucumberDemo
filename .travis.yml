@@ -1,0 +1,15 @@
+git:
+  depth: 10
+  quiet: false
+language: java
+jdk:
+  - oraclejdk8
+script: mvn clean verify -Dtest=TestRunner
+
+# safelist
+branches:
+  only:
+    - master
+
+
+
