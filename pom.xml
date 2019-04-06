@@ -62,18 +62,16 @@
             <version>3.4.0</version>
         </dependency>
         <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>maven-cucumber-reporting</artifactId>
-            <version>4.5.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.googlecode.totallylazy</groupId>
             <artifactId>totallylazy</artifactId>
             <version>1077</version>
         </dependency>
-
-
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -85,7 +83,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <browserName>chrome</browserName>
-                        <headlessChrome>false</headlessChrome>
+                        <headlessChrome>true</headlessChrome>
                         <baseUrl>https://the-internet.herokuapp.com</baseUrl>
                         <runOnGrid>false</runOnGrid>
                         <gridUrl></gridUrl>
@@ -97,12 +95,35 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>(whatever version is current)</version>
+                <version>3.8.0</version>
                 <configuration>
                     <!-- or whatever version you use -->
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>4.5.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>seleniumCucumberDemo</projectName>
+                            <skip>false</skip>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <jsonFiles>
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                            <checkBuildResult>false</checkBuildResult>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

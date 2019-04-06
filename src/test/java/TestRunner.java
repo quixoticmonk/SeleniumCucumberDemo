@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
         glue = {"steps"},
         features = "src/test/resources/features",
         monochrome = true,
+        plugin = {"usage", "html:target/cucumber-reports" ,"json:target/cucumber-reports/Cucumber.json","junit:target/cucumber-reports/Cucumber.xml"},
         snippets = SnippetType.CAMELCASE,
         tags ={"@first"}
 )
