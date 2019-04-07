@@ -72,6 +72,24 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.26</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -83,7 +101,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <browserName>chrome</browserName>
-                        <headlessChrome>true</headlessChrome>
+                        <headlessChrome>false</headlessChrome>
                         <baseUrl>https://the-internet.herokuapp.com</baseUrl>
                         <runOnGrid>false</runOnGrid>
                         <gridUrl></gridUrl>
