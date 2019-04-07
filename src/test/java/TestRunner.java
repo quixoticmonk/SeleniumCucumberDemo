@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         monochrome = true,
         plugin = {"usage", "html:target/cucumber-reports" ,"json:target/cucumber-reports/Cucumber.json","junit:target/cucumber-reports/Cucumber.xml"},
         snippets = SnippetType.CAMELCASE,
-        tags ={"@first"}
+        tags =""
 )
 
 /*tags={"@smoke"} - Run only the tests with tag smoke

@@ -15,15 +15,5 @@ public class SeleniumCommands {
     public static WebElement findElementByXpath(WebDriver driver, String xpath){
         return driver.findElement(By.xpath(xpath));
     }
-    public static WebElement findElementById(WebDriver driver, String id){
-        return driver.findElement(By.id(id));
-    }
-    public static WebElement findElementByClassName(WebDriver driver, String className){
-        return driver.findElement(By.className(className));
-    }
-    public static void enterData(String data){
-        return ;
-    }
-
 
 }

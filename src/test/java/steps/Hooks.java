@@ -6,6 +6,8 @@ import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import utilitlies.BrowserFactory;
 
+import static utilitlies.BrowserFactory.closeBrowser;
+import static utilitlies.BrowserFactory.openUrl;
 import static utilitlies.LoggerUtil.info;
 
 public class Hooks{
@@ -19,14 +21,12 @@ public class Hooks{
         info("------------------------------");
 
         driver=browserFactory.configureDriver();
-        browserFactory.openUrl("");
+        openUrl("");
     }
 
     @After()
     public void tearDown(Scenario scenario){
-        if (driver != null) {
-            driver.quit();
-        }
+        closeBrowser();
 
         info("------------------------------");
         info(scenario.getName() + " Status - " + scenario.getStatus());

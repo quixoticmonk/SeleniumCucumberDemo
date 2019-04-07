@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class BrowserFactory {
     private static WebDriver driver;
@@ -31,11 +32,13 @@ public class BrowserFactory {
     private static final String CHROME_DRIVER_LCN=DRIVER_LOCATION+ File.separator+System.getProperty("chromeDriverBinary");
 
     public WebDriver configureDriver() {
+
         if ("true".equalsIgnoreCase(RUN_ON_GRID)) {
             switch (BROWSER_NAME) {
                 case FIREFOX:
                     try {
                         driver = new RemoteWebDriver(new URL(GRID_URL), getFirefoxOptions());
+                        setUpDriver();
                         return driver;
                     } catch (MalformedURLException e) {
                         e.getMessage();
@@ -43,6 +46,7 @@ public class BrowserFactory {
                 case CHROME:
                     try {
                         driver = new RemoteWebDriver(new URL(GRID_URL), getChromeOptions());
+                        setUpDriver();
                         return driver;
                     } catch (MalformedURLException e) {
                         e.getMessage();
@@ -50,6 +54,7 @@ public class BrowserFactory {
                 case INTERNET_EXPLORER:
                     try {
                         driver = new RemoteWebDriver(new URL(GRID_URL), getIeOptions());
+                        setUpDriver();
                         return driver;
                     } catch (MalformedURLException e) {
                         e.getMessage();
@@ -61,12 +66,15 @@ public class BrowserFactory {
             switch (BROWSER_NAME.toUpperCase()) {
                 case FIREFOX:
                     driver = configureFirefoxDriver();
+                    setUpDriver();
                     break;
                 case CHROME:
                     driver = configureChromeDriver();
+                    setUpDriver();
                     break;
                 case INTERNET_EXPLORER:
                     driver = configureIEDriver();
+                    setUpDriver();
                     break;
                 default:
                     break;
@@ -75,8 +83,15 @@ public class BrowserFactory {
         return driver;
     }
 
+    private void setUpDriver() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
     public static void openUrl(String url) {
         driver.get(BASE_URL + "/" + url);
+    }
+    public static void closeBrowser(){
+        driver.close();
     }
 
 
