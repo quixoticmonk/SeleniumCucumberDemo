@@ -12,7 +12,7 @@ script:
   - wget "https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip"
   - unzip *.zip -d .
   - cd /home/travis/build/quixoticmonk/SeleniumCucumberDemo
-  - mvn clean verify -Dtest=TestRunner -DdriverLocation=drivers -DchromeDriverBinary=chromedriver
+  - mvn clean verify -Dtest=TestRunner -DdriverLocation=drivers -DchromeDriverBinary=chromedriver -DheadlessChrome=true
 
 # safelist
 branches:
