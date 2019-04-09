@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - mkdir drivers
+      - cd drivers
+      - wget "https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip"
+      - unzip *.zip -d .
+      - cd /home/travis/build/quixoticmonk/SeleniumCucumberDemo
+      - mvn clean verify -Dtest=TestRunner -DdriverLocation=drivers -DchromeDriverBinary=chromedriver -DheadlessChrome=true
