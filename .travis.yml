@@ -4,11 +4,8 @@ git:
 language: java
 addons:
   chrome: stable
-  firefox: latest
 jdk:
   - oraclejdk8
-  - oraclejdk9
-  - openjdk8
 script:
   - mkdir drivers
   - cd drivers
