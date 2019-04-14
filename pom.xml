@@ -41,12 +41,6 @@
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>4.2.6</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-jvm</artifactId>
             <version>4.2.6</version>
             <type>pom</type>
@@ -61,11 +55,11 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.4.0</version>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>com.googlecode.totallylazy</groupId>
             <artifactId>totallylazy</artifactId>
             <version>1077</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
