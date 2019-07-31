@@ -12,7 +12,7 @@ pool:
 steps:
 - task: ShellScript@2
   inputs:
-    scriptPath:./drivers.sh
+    scriptPath: drivers.sh
     #args: '' # Optional
     #disableAutoCwd: false # Optional
     #cwd: '' # Optional
