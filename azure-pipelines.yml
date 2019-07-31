@@ -10,6 +10,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: ShellScript@2
+  inputs:
+    scriptPath:./drivers.sh
+    #args: '' # Optional
+    #disableAutoCwd: false # Optional
+    #cwd: '' # Optional
+    #failOnStandardError: false
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -19,4 +26,4 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: 'clean verify -Dtest=TestRunner -DdriverLocation=drivers -DchromeDriverBinary=chromedriver -DheadlessChrome=true'
