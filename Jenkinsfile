@@ -11,7 +11,7 @@ pipeline{
         stage("Build Code"){
             steps{
                 echo 'Inside Build Stage'
-                sh 'mvn clean package -Dskiptests=true'
+                sh 'mvn clean package -Dskiptests=true -Dmaven.test.skip=treu'
             }
         }
         stage("Dependency check"){
