@@ -7,7 +7,7 @@ addons:
 script:
   - mkdir drivers
   - cd drivers
-  - wget "https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip"
+  - wget "https://chromedriver.storage.googleapis.com/77.0.386540/chromedriver_linux64.zip"
   - unzip *.zip -d .
   - cd /home/travis/build/quixoticmonk/SeleniumCucumberDemo
   - mvn clean verify -Dtest=TestRunner -DdriverLocation=drivers -DchromeDriverBinary=chromedriver -DheadlessChrome=true
