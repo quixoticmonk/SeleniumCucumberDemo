@@ -4,8 +4,6 @@ git:
 language: java
 addons:
   chrome: stable
-before_script:
-  - chromedriver-update 73.0.3683.68
 script:
   - mkdir drivers
   - cd drivers
