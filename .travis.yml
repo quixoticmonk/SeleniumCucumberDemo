@@ -4,8 +4,6 @@ git:
 language: java
 addons:
   chrome: stable
-jdk:
-  - oraclejdk8
 script:
   - mkdir drivers
   - cd drivers
