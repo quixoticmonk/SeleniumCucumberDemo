@@ -19,7 +19,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>4.2.6</version>
+            <version>4.8.0</version>
             <scope>test</scope>
         </dependency>
 
